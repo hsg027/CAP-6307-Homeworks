@@ -44,19 +44,19 @@ class MultinomialNaiveBayes(LinearClassifier):
         
         positive=0 
         negative = 0
-        prior /= n_docs
+        prior = prior/ n_docs
         
         for j in range(n_docs): 
-            prior[y[j]] += 1
+            prior[y[j]] = pior[y[j]]+ 1
 
         for k in range(n_docs):
             for words in range(n_words):
-                likelihood[words, y[k]] += x[k, words]
+                likelihood[words, y[k]] = likelihood[words, y[k]] + x[k, words]
                 if y[k] == 0:
-                    positive += x[k, words]
+                    positive = positive+ x[k, words]
                 else:
-                    negative += x[k, words]
-        likelihood[:, 0]likelihood[:, 1] = likelihood[:, 0]/positive, likelihood[:, 1]/ negative
+                    negative = negative + x[k, words]
+        likelihood[:, 0], likelihood[:, 1] = likelihood[:, 0]/positive, likelihood[:, 1]/ negative
 
 
 
